@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ТехноМагазин - Компьютерная техника</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+       
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    </head>
+    
+    <style>
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            background-color: #121212; 
+            color: #f4f4f4; 
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ffcc00; 
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://getwallpapers.com/wallpaper/full/6/a/8/804820-popular-opeth-wallpapers-1920x1080-for-iphone-5s.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .btn {
+            background: #ffcc00; 
+            color: #333;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 2s ease-out forwards;
+        }
+
+        .btn:hover {
+            background-color: #e6b800; 
+            transform: scale(1.05);
+        }
+
+
+.features {
+    background: #1a1a1a; 
+    text-align: center;
+    padding: 60px 0;
+}
+
+.features h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #ffcc00; 
+}
+
+.features ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.features li {
+    width: 250px;
+    margin: 20px;
+    background: #333; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(100px);
+    animation: fadeInUp 1s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.features li:hover {
+    transform: translateY(-10px);
+}
+
+.features li img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.features li h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #ffcc00; 
+}
+
+.features li p {
+    font-size: 14px;
+    color: #bbb; 
+}
+
+        
+        .products {
+            background: #121212; 
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .products h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .products h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: #ffcc00;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            justify-items: center;
+            padding: 0 20px;
+        }
+
+        .product-card {
+            background: #333; 
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            max-width: 300px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ffcc00; 
+        }
+
+        .product-card p {
+            font-size: 16px;
+            color: #bbb; 
+            margin-bottom: 20px;
+        }
+
+        .product-card a {
+            background: #ffcc00; 
+            padding: 12px 25px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            margin-top: auto;
+        }
+
+        .product-card a:hover {
+            background-color: #e6b800; 
+            transform: scale(1.05);
+        }
+
+        
+        .reviews {
+            background: #222; 
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .reviews h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .reviews blockquote {
+            font-style: italic;
+            font-size: 18px;
+            color: #f4f4f4;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-left: 5px solid #ffcc00;
+            background: #333; 
+            border-radius: 5px;
+            transform: translateY(100px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .reviews footer {
+            text-align: right;
+            font-size: 14px;
+            color: #888;
+        }
+
+        
+        .contact {
+            background: #121212; 
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .contact form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            background: #333; 
+            color: #f4f4f4; 
+        }
+
+        .contact textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .contact input:focus,
+        .contact textarea:focus {
+            border-color: #ffcc00; 
+        }
+
+        .contact button {
+            background: #ffcc00; 
+            color: #333;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact button:hover {
+            background: #e6b800; 
+        }
+        .search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search input {
+    padding: 10px 40px 10px 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: #333;
+    color: #fff;
+    width: 200px;
+    font-size: 16px;
+}
+
+.search button {
+    position: absolute;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.search button:hover {
+    color: #ffcc00; 
+}
+
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .hero h1 {
+        font-size: 30px;
+    }
+}
+
+
+    </style>
+       
+
+<body>
+    <header>
+        <nav>
+            <a href="#hero">Главная</a>
+            <a href="#features">Новинки</a>
+            <a href="#products">Продукция</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#contact">Контакты</a>
+            <div class="search">
+                <input type="text" placeholder="Поиск...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
+    </header>
+    
+
+    
+    <section class="hero" id="hero">
+        <h1>Добро пожаловать в ТехноМагазин</h1>
+        <p>Лучшие технологии для игр и не только</p>
+        <a href="#products" class="btn">Наши товары</a>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Новинки</h2>
+        <ul>
+            <li>
+                <img src="https://d3fa68hw0m2vcc.cloudfront.net/c12/241335507.jpeg" alt="New Product 1">
+                <h3>Ноутбук ASUS</h3>
+                <p>Сверхбыстрая производительность и стильный дизайн.</p>
+            </li>
+            <li>
+                <img src="https://yandex-images.clstorage.net/g9I9H3e32/e22311wv/q050bgUWtaUvhBGbUHlDFZlizvDdXLjMNIw9Fdi8rAGrmPQ3h5DSyTShYyDuFGghdEhizFVxTmcVN7AiHeeYmz5KJGrR0oG0mmHF2tRtg2UJIzpBCdy8vfGsjGRtGTkk-HtTNcCmUG-WJpTCOrQtRGGJ01hEZ8gGIEUgYO9naGkpzDRPl7b0U-2E47zga6BnGDHa0JxNrbzRjJzCjX2_UJq5oUSARRJ-lmdmgDlHPYSzScWLhXeak0LG42LNJWpJ6G2UTuQFVsFORVGe8KkDpLljKAK9_H-807x-UV-eziOZu9MXEEcw3uWnl9OoRI81M4qXqTW0yvLw5zBCbxXoCBoMhm-nRbQhbycDvIEJAmfLsdpyfC9u7IEs_-FtvD0zSRgCdOK3A98UZeVDqAYfVSEqNKoGtLrDMtXAAg01Giu5fYbMRFe1wq1H8Y3xuMKU6pBasG-tzWwCHe_STS2tcylKw5aABcOtpdSEEngnHddAypebRKZIgkFXMvAvZMq5qi3ULnR31THudmDuoZtDRJlBCWJvb28cA2wfgH8MzwNoqFM3UOciT6Wmx3N4Vi_ms-tFmzZlGmAQBTAgnMWK-MvMBi5VhtYzrwQAvOHKQKdZAWlSjq0en-Pdj0Je709DGxqTRXIFQw50NNdCWLaMloLa5LtENOlRIHazUW0F-Pn4DhX_FiSmsL82kS9D-NDFCgHa83wfjpzhX-2hDI6uoNrrAZZy99IMd5dFEFk1L7WxukSJ1JRpwOBnEzPuhVuZeh2VXbRnJcGcNcI_k2pjROiTiCLMbS5_0UycAr2N_HGbuoGWUKXwb-RX9AJ6pw_nIOl1yHX262IRJ8BCzZVIyhtPty3GBuZSz7SxLRLZEqWLUmpg7-2ND4Me3aOfb3zxiJpChrLkot-G5kVCaccdJoNI1fo0J6mSowUi8F_nWImIb1Y9hhSVwR1Gsbwi-CJXGHHIcKxvDa2A_e5jT6wtY" alt="New Product 2">
+                <h3>Мышь Razer</h3>
+                <p>Игровая мышь с настраиваемыми кнопками и подсветкой.</p>
+            </li>
+            <li>
+                <img src="https://usedhp.ru/d/dell_p2415q_1.jpg" alt="New Product 3">
+                <h3>Монитор Dell</h3>
+                <p>Потрясающая картинка и отличные углы обзора.</p>
+            </li>
+        </ul>
+    </section>
+    
+    
+
+    
+    <section id="products" class="products">
+        <h2>Наши товары</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://static.insales-cdn.com/images/products/1/2329/949840153/1aceraspire15a15-51ma15-51m-74hf6.jpg" alt="Product 1">
+                <h3>Ноутбук Samsung</h3>
+                <p>Производительный ноутбук для работы и игр.</p>
+                <h3>Характеристики</h3>
+                <a href="#" class="btn">Купить</a>
+            </div>
+            <div class="product-card">
+                <img src="https://cdn1.ozone.ru/s3/multimedia-1-j/6917201947.jpg" alt="Product 2">
+                <h3>Монитор Ardor Gaming</h3>
+                <p>Чистое изображение с высокой контрастностью.</p>
+                <a href="#" class="btn">Купить</a>
+            </div>
+            <div class="product-card">
+                <img src="https://avatars.mds.yandex.net/i?id=c04dd9e065d060d90d60079f650c9c649a20d3c56386e76d-11543356-images-thumbs&n=13" alt="Product 3">
+                <h3>Мышь Logitech</h3>
+                <p>Точная и удобная мышь для комфортной работы.</p>
+                <a href="#" class="btn">Купить</a>
+            </div>
+            <div class="product-card">
+                <img src="https://avatars.mds.yandex.net/i?id=d2af6f119d4a36bea2735970fb1ada3835dfa7c1-12691405-images-thumbs&n=13" alt="Product 4">
+                <h3>Клавиатура Ardor Gaming</h3>
+                <p>Механическая клавиатура с отличным откликом.</p>
+                <a href="#" class="btn">Купить</a>
+            </div>
+            <div class="product-card">
+                <img src="https://yandex-images.clstorage.net/iY5EX5098/8cf452Rxsw/DWQznW5PU1bDd4j_DQiD2mzUO3UlnXOnWmW-wADydesI72UR8CC6vkiYqzQRtjCD340lQC7E7DAK2AlMqQlVMB9nItEkC0gLlTyeqwULhthxiXhkOcd3-kAn7c0EpE6Necged9tCwc9ltbRkS7RnzJTLYnwQ1MtrNLZ7VoIBXRw9dxGmalgpceNWz88ePqzIcb8tWALrQ81KSPulcP5BoHfsG17lQ-_GRqOZf06Wb9_D1URIAqDtZz6BXUSPLVk7EFIFmn1YMVzvdtTzHAqL7Va8IXw-3WLzUU7xgWP2R7l62wtSzXzL20mrpldMp2HN-9R4USS6_HUZv0ZsvSxBGxNXDZBxehNP1VPM8RUtiPNYnh91PdZT63RP65FT1l-XcewoTN927MVqj7RtTIpIw_7qXnk8k-JICZZdaaAhYwgUcguGRko5ct51ze4DB4TsQ5ADSiXgXfZ1dMqqdO5mlFr6DU3YSd7xepOMYWiAZOz14EZxBKzZQA6aZ3eqJFkiL2EhunVSN3PXRfzOBhOh1FuJAnoG1FXxRmTFnXLkSItt8DdkxHzu6Uuxokh_kXXB-f56azuVwXIeoHx6ghtAECxSAKRZUDBd8nzr5B88r9dTrAVnGNZS_1546bR6zXSXVf4lUvlG-uR6lptrRqJj3N7DRnADv89HOYBHTIo5eAI6XD6uRUQ_SfV07ecpLYHrYLkCQh7-d-ldeNaIT8dpgVDmG2TbcfHKXqqFZkuZTP_09E9EJYPiVR6KXmi9EUwAEkcqsVN0FFTOaurLHhGk6FGSJ1wy4Hj_fVvtuEb8QoZo7ips3H3S33qLnlRuk0_l2PReViS_9nAImHNphCFEIjRdAqhYfjJMwG7_9CMFoO9ejRp6P8Bz-llX16hR4ke0cNsaUcBR3eRVl7lnaJxs2-P7RmYOgv51DqROVrw6bAMRYAaTSE4UceJH7soZB7fQcbM5XxLkV_BRRuuqWuY" alt="Product 5">
+                <h3>Наушники Logitech</h3>
+                <p>Качество звука на высшем уровне, идеальны для игр и музыки.</p>
+                <a href="#" class="btn">Купить</a>
+            </div>
+            <div class="product-card">
+                <img src="https://www.iguides.ru/upload/medialibrary/2f8/2f84b7f8011a6c2ede7dc71856147077.png" alt="Product 6">
+                <h3>Игровой Компьютер</h3>
+                <p>Высокопроизводительный ПК для игр и повседневого использовавания.</p>
+                <a href="#" class="btn">Купить</a>
+            </div>
+            <div class="product-card">
+                <img src="https://i.ytimg.com/vi/ou0-VlsC9qI/maxresdefault.jpg" alt="Product 7">
+                <h3>Микрафон Fifine AM8</h3>
+                <p>Идеальный микрафон для игр и для записи видео.</p>
+                <a href="#" class="btn">Купить</a>
+            </div>
+        </div>
+    </section>
+    
+
+    
+    <section class="reviews" id="reviews">
+        <h2>Отзывы</h2>
+        <blockquote>
+            <p>Это лучшая техника, которую я когда-либо использовал! Работает без сбоев, качество на высоте.</p>
+            <footer>Алексей, покупатель</footer>
+        </blockquote>
+    </section>
+
+    
+    <section class="contact" id="contact">
+        <h2>Контактная информация</h2>
+        <form action="#">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <input type="email" name="email" placeholder="Ваш email" required>
+            <textarea name="message" placeholder="Ваше сообщение" rows="4" required></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+    </section>
+
+
+</body>
+</html>
+
